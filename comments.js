@@ -1,13 +1,15 @@
-// Create Web Server
+// Create web server
 const express = require('express');
 const app = express();
-
-// Create a route
-app.get('/comments', (req, res) => {
-  res.send('Comments');
+// Create path for comments
+const comments = require('./comments');
+// Create path for comments
+app.use('/comments', comments);
+// Create path for root
+app.get('/', (req, res) => {
+  res.send('Welcome to the jungle!');
 });
-
-// Start the server
-app.listen(3000, () => {
-  console.log('Server started');
+// Create port for server
+app.listen(4001, () => {
+  console.log('Server is listening on port 4001');
 });
